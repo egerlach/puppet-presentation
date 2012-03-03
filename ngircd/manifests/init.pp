@@ -1,7 +1,5 @@
-class ngircd {
+class ngircd ( $ircname, $infotext ) {
 	$motd = "Welcome to ${::fqdn}, my hell"
-	$ircname = "irc1.awesome.net"
-	$infotext = "An awesome IRC server"
 
 	package { "ngircd":
 		provider => "apt",
