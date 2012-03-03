@@ -28,3 +28,6 @@ class ngircd {
 		notify => Service[ngircd]
 	}
 }
+
+class { "ngircd": }
+# or "include ngircd"
