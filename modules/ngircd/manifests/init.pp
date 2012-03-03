@@ -1,4 +1,6 @@
 class ngircd ( $ircname, $infotext ) {
+	include concat::setup
+
 	$motd = "Welcome to ${::fqdn}, my hell"
 
 	package { "ngircd":
@@ -13,13 +15,17 @@ class ngircd ( $ircname, $infotext ) {
 		require => Package[ngircd]
 	}
 
-	file { "/etc/ngircd/ngircd.conf":
-		ensure => present,
+	concat { "/etc/ngircd/ngircd.conf":
 		owner => irc,
 		group => irc,
 		mode => 0644,
-		content => template("ngircd/ngircd.conf.erb"),
 		notify => Service[ngircd]
+	}
+
+	concat::fragment { "ngircd_base":
+		target => "/etc/ngircd/ngircd.conf",
+		order => "00",
+		content => template("ngircd/ngircd.conf.erb")
 	}
 
 	file { "/etc/ngircd/ngircd.motd":
