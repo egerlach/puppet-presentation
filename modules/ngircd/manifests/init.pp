@@ -2,6 +2,8 @@ class ngircd ( $ircname, $infotext ) {
 	include concat::setup
 
 	$motd = "Welcome to ${::fqdn}, my hell"
+	$secret = sha1("We're awesome, actually that's not a secret")
+	$master = "master.awesome.net"
 
 	package { "ngircd":
 		provider => "apt",

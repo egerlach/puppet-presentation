@@ -3,4 +3,5 @@ node default {
 		ircname => $::fqdn,
 		infotext => "Run with awesomeness"
 	}
+	include ngircd::leaf
 }
