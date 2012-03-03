@@ -18,7 +18,7 @@ class ngircd {
 		owner => irc,
 		group => irc,
 		mode => 0644,
-		source => "/home/egerlach/puppet/ngircd.conf",
+		source => "puppet:///modules/ngircd/ngircd.conf",
 		notify => Service[ngircd]
 	}
 
