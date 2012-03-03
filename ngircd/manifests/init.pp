@@ -1,5 +1,7 @@
 class ngircd {
 	$motd = "Welcome to ${::fqdn}, my hell"
+	$ircname = "irc1.awesome.net"
+	$infotext = "An awesome IRC server"
 
 	package { "ngircd":
 		provider => "apt",
@@ -18,7 +20,7 @@ class ngircd {
 		owner => irc,
 		group => irc,
 		mode => 0644,
-		source => "puppet:///modules/ngircd/ngircd.conf",
+		content => template("ngircd/ngircd.conf.erb"),
 		notify => Service[ngircd]
 	}
 
